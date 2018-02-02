@@ -1,0 +1,179 @@
+﻿.container {
+	width:1100px;
+}
+.carousel{
+	width:1100px;
+	}
+.book-now{
+	height:65px;
+	background-color: #2d2d30;
+	padding-top:12px !important;
+	opacity: 0.8;
+	margin-top:10px;	
+}
+.form-control{
+	background-color:#000;
+	border-radius:2px;
+	color:#fff;
+	font-weight:lighter;
+}
+.logo-small {
+    color: #f4511e;
+    font-size: 50px;
+}
+.navbar li a, .navbar { 
+    color: #e5e5e5 !important;
+}
+.navbar-brand {
+	padding:0 !important;
+	margin:auto !important;
+}
+
+.logo {
+    color: #f4511e;
+    font-size: 200px;
+}
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#29292c !important;
+}
+p {
+    font-weight: normal;
+	font-size:small;
+}
+
+.carousel-inner img {
+	width: 100%;
+	margin:auto;
+}
+.open .dropdown-toggle {
+	color:white;
+	background-color:#554 !important;
+}
+.dropdown-menu li a{
+	color:black !important;
+}
+.dropdown-menu li a:hover {
+	background-color: gray;
+}
+.hov::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: width .3s;
+}
+
+.hov:hover::after {
+    width: 100%;
+}
+.navbar-nav li a:hover {
+    color: #fff !important;	
+}
+.room{
+	background: #2d2d30;
+    	color: #bdbdbd;
+}
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+
+.thumbnail p {
+    margin: 10px;
+    color: #555;
+}
+
+.price{
+	font-size: large;
+	font-weight: bold;
+	font-family: "lucida sans";
+}
+footer {
+    background-color: #2d2d30;
+    color: #f5f5f5;
+    padding: 32px;
+}
+
+footer a {
+    color: #f5f5f5;
+}
+
+footer a:hover {
+    color: #777;
+    text-decoration: none;
+}
+.btn {
+    padding: 10px 20px;
+    background-color: #f4511e;
+    color: #fff;
+    border-radius: 0px;
+    transition: .3s;
+}
+.btn:hover {
+	background-color: #fff;
+	color:#f4511e;
+	border: 1px solid black;
+}
+#services{
+	max-width:1000px;
+}
+.navbar {
+    margin-bottom: 0;
+    height:60px;
+    background-color: #2d2d30;
+    border: 0;
+    font-size: 11px !important;
+    letter-spacing: 4px;
+    opacity:0.8;
+}
+.form1 {
+	}
+.required:after { 
+    content: "*";
+    color: red;
+}
+select {
+	vertical-align:top;
+}
+.form-control{
+	width:225px;
+}
+.room-price{
+	background-color:#ffe6cc;
+	background-repeat: no-repeat;
+}
+.room-hover{
+	padding:10px;
+}
+.imgdiv{
+	height:75px;
+	width:75px;
+	display:none;
+}
+.row{
+}
+.form-control {
+	background-color: #fff;
+	color: black;
+}
+
+.social{
+	font-size:25px;
+	margin:5px
+}
+#googleMap {	
+    width: 100%;
+    height: 500px; 
+}
+.deluxe{
+	opacity:0.6;
+	}
+.premium{
+	opacity:0.6;
+	}
+.suite{
+	opacity:0.6;
+	}
