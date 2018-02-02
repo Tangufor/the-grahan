@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Book Now</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles2.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src = "http://cdn.jsdelivr.net/jquery.cookie/1.3.1/jquery.cookie.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+  <script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]');
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+      $(".room-hover").hover(function(){
+        $(this).css("background-color", "gray");
+        }, function(){
+            $(this).css("background-color", "white");
+      });
+      //var $append = $( "<span class='glyphicon glyphicon-ok logo-small'></span>" );
+      $("#deluxe").click(function(){
+          $(this).animate({opacity:'0.8'});
+          $(this).addClass("deluxe");
+          $("#premium").removeClass("premium");
+          $("#suite").removeClass("suite");
+          $("#premium").animate({opacity:'1'});
+          $("#suite").animate({opacity:'1'});
+          $("#deluxe1").css("background-image", "url(check2a.png)");
+          $("#premium1").css("background-image", "none");
+          $("#suite1").css("background-image", "none");
+        //  $(this).css("background-color", "gray");
+              //$(".check").css("background-image","none");
+              //$(".check").css("background-image","url("+getImg+")");
+      });
+      $("#premium").click(function(){
+        $("#deluxe").removeClass("deluxe");
+        $("#suite").removeClass("suite");
+        $("#deluxe").animate({opacity:'1'});
+        $("#suite").animate({opacity:'1'});
+          $(this).animate({opacity:'0.8'});
+          $("#premium1").css("background-image", "url(check2a.png)");
+          $("#deluxe1").css("background-image", "none");
+          $("#suite1").css("background-image", "none");
+          $(this).addClass("premium");
+      });
+      $("#suite").click(function(){
+        $("#deluxe").removeClass("deluxe");
+        $("#premium").removeClass("premium");
+        $("#deluxe").animate({opacity:'1'});
+        $("#premium").animate({opacity:'1'});
+          $(this).animate({opacity:'0.8'});
+          $(this).addClass("suite");
+          $("#suite1").css("background-image", "url(check2a.png)");
+          $("#premium1").css("background-image", "none");
+          $("#deluxe1").css("background-image", "none");
+      });
+
+
+      $("#googleMap").hover(function(){
+        $("#googleMap").addClass("googleMaps");
+      });
+      var clientKey = "js-XlalQH6kVoPgkQjAkDWKj3JTCESokMN134oprDwrEMItEUtlRWi8WHxHiqS8COyz";
+      $("#zip").on("keyup change", function(){
+        var zipcode = $(this).val().substring(0,5);
+        if(zipcode.length == 5 && /^[0-9]+$/.test(zipcode)){
+          var url = "http://api.zip-codes.com/ZipCodesAPI.svc/1.0/QuickGetZipCodeDetails/"+zipcode+"?key=16QE4YKQ1P5SUENRKKK5";
+          $.ajax({
+            url:url,
+            datatype:"json"
+          }).done(function(data){
+            $("#city").val(data.City);
+            $("#state").val(data.State);
+          }).fail(function(data){
+            alert("fail");
+          });
+        }
+      }).trigger("change");
+      var string = new Array();
+      if (tring.length == 0) {
+            if (window.location.search.split('?').length > 1) {
+                var attribs = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < attribs.length; i++) {
+                    var key = attribs[i].split('=')[0];
+                    var value = decodeURIComponent(attribs[i].split('=')[1]);
+                    string[key] = value;
+                }
+            }
+        }
+        if (string["date-in"] != null && string["date-out"] != null &&
+        string["guest"] != null) {
+          $("#dateIn").val(string["date-in"]);
+          $("#dateOut").val(string["date-out"]);
+          $("#guest").val(string["guest"]);
+        }
+
+	});
+</script>
+</head>
+<body id="pageTop">
+  <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="grahan1.jpg" width="120" height="60" alt="Logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="hov" href="index.html">HOME</a></li>
+        <li><a class="hov" href="index.html#rooms">ROOMS</a></li>
+        <li><a class="hov" href="index.html#services">SERVICES</a></li>
+        <li><a class="hov" href="meetings.html">MEETINGS & EVENTS</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle hov" data-toggle="dropdown" href="#">ATTRACTIONS
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="hov" href="monuments.html">MONUMENTS</a></li>
+            <li><a class="hov" href="restaurants.html">RESTAURANTS</a></li>
+            <li><a class="hov" href="waterfront.html">WATERFRONTS</a></li>
+          </ul>
+        </li>
+        <li><a class="hov" href="form.html">RESERVE/CONTACT US</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container" style="margin-top:100px">
+  <div class="col-sm-6">
+    <h2>Book Your Reservation Now</h2>
+    <div class="form1">
+      <form name="form" onsubmit="return validation()" method="post" id="myform">
+        <fieldset>
+          <legend>Personal information</legend>
+        <div class="form-group"><label class="required">Name</label><br>
+          <div class="row">
+            <div class="col-sm-6">
+              <input class="form-control" type="text" name ="firstname" required="required" placeholder="First name">
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" type="text" name ="lastname" required="required" placeholder="Last name">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Contact information</legend>
+        <div class="form-group"><label class="required">Address</label>
+          <div class="row">
+            <div class="col-sm-6">
+              <input class="form-control" type="text" placeholder="Company name">
+            </div>
+            <div class="col-sm-6">
+              <select class="form-control" required>
+                <option value="" hidden="hidden">Country</option>
+              	<option value="AFG">Afghanistan</option>
+              	<option value="ALA">Åland Islands</option>
+              	<option value="ALB">Albania</option>
+              	<option value="DZA">Algeria</option>
+              	<option value="ASM">American Samoa</option>
+              	<option value="AND">Andorra</option>
+              	<option value="AGO">Angola</option>
+              	<option value="AIA">Anguilla</option>
+              	<option value="ATA">Antarctica</option>
+              	<option value="ATG">Antigua and Barbuda</option>
+              	<option value="ARG">Argentina</option>
+              	<option value="ARM">Armenia</option>
+              	<option value="ABW">Aruba</option>
+              	<option value="AUS">Australia</option>
+              	<option value="AUT">Austria</option>
+              	<option value="AZE">Azerbaijan</option>
+              	<option value="BHS">Bahamas</option>
+              	<option value="BHR">Bahrain</option>
+              	<option value="BGD">Bangladesh</option>
+              	<option value="BRB">Barbados</option>
+              	<option value="BLR">Belarus</option>
+              	<option value="BEL">Belgium</option>
+              	<option value="BLZ">Belize</option>
+              	<option value="BEN">Benin</option>
+              	<option value="BMU">Bermuda</option>
+              	<option value="BTN">Bhutan</option>
+              	<option value="BOL">Bolivia, Plurinational State of</option>
+              	<option value="BES">Bonaire, Sint Eustatius and Saba</option>
+              	<option value="BIH">Bosnia and Herzegovina</option>
+              	<option value="BWA">Botswana</option>
+              	<option value="BVT">Bouvet Island</option>
+              	<option value="BRA">Brazil</option>
+              	<option value="IOT">British Indian Ocean Territory</option>
+              	<option value="BRN">Brunei Darussalam</option>
+              	<option value="BGR">Bulgaria</option>
+              	<option value="BFA">Burkina Faso</option>
+              	<option value="BDI">Burundi</option>
+              	<option value="KHM">Cambodia</option>
+              	<option value="CMR">Cameroon</option>
+              	<option value="CAN">Canada</option>
+              	<option value="CPV">Cape Verde</option>
+              	<option value="CYM">Cayman Islands</option>
+              	<option value="CAF">Central African Republic</option>
+              	<option value="TCD">Chad</option>
+              	<option value="CHL">Chile</option>
+              	<option value="CHN">China</option>
+              	<option value="CXR">Christmas Island</option>
+              	<option value="CCK">Cocos (Keeling) Islands</option>
+              	<option value="COL">Colombia</option>
+              	<option value="COM">Comoros</option>
+              	<option value="COG">Congo</option>
+              	<option value="COD">Congo, the Democratic Republic of the</option>
+              	<option value="COK">Cook Islands</option>
+              	<option value="CRI">Costa Rica</option>
+              	<option value="CIV">Côte d'Ivoire</option>
+              	<option value="HRV">Croatia</option>
+              	<option value="CUB">Cuba</option>
+              	<option value="CUW">Curaçao</option>
+              	<option value="CYP">Cyprus</option>
+              	<option value="CZE">Czech Republic</option>
+              	<option value="DNK">Denmark</option>
+              	<option value="DJI">Djibouti</option>
+              	<option value="DMA">Dominica</option>
+              	<option value="DOM">Dominican Republic</option>
+              	<option value="ECU">Ecuador</option>
+              	<option value="EGY">Egypt</option>
+              	<option value="SLV">El Salvador</option>
+              	<option value="GNQ">Equatorial Guinea</option>
+              	<option value="ERI">Eritrea</option>
+              	<option value="EST">Estonia</option>
+              	<option value="ETH">Ethiopia</option>
+              	<option value="FLK">Falkland Islands (Malvinas)</option>
+              	<option value="FRO">Faroe Islands</option>
+              	<option value="FJI">Fiji</option>
+              	<option value="FIN">Finland</option>
+              	<option value="FRA">France</option>
+              	<option value="GUF">French Guiana</option>
+              	<option value="PYF">French Polynesia</option>
+              	<option value="ATF">French Southern Territories</option>
+              	<option value="GAB">Gabon</option>
+              	<option value="GMB">Gambia</option>
+              	<option value="GEO">Georgia</option>
+              	<option value="DEU">Germany</option>
+              	<option value="GHA">Ghana</option>
+              	<option value="GIB">Gibraltar</option>
+              	<option value="GRC">Greece</option>
+              	<option value="GRL">Greenland</option>
+              	<option value="GRD">Grenada</option>
+              	<option value="GLP">Guadeloupe</option>
+              	<option value="GUM">Guam</option>
+              	<option value="GTM">Guatemala</option>
+              	<option value="GGY">Guernsey</option>
+              	<option value="GIN">Guinea</option>
+              	<option value="GNB">Guinea-Bissau</option>
+              	<option value="GUY">Guyana</option>
+              	<option value="HTI">Haiti</option>
+              	<option value="HMD">Heard Island and McDonald Islands</option>
+              	<option value="VAT">Holy See (Vatican City State)</option>
+              	<option value="HND">Honduras</option>
+              	<option value="HKG">Hong Kong</option>
+              	<option value="HUN">Hungary</option>
+              	<option value="ISL">Iceland</option>
+              	<option value="IND">India</option>
+              	<option value="IDN">Indonesia</option>
+              	<option value="IRN">Iran, Islamic Republic of</option>
+              	<option value="IRQ">Iraq</option>
+              	<option value="IRL">Ireland</option>
+              	<option value="IMN">Isle of Man</option>
+              	<option value="ISR">Israel</option>
+              	<option value="ITA">Italy</option>
+              	<option value="JAM">Jamaica</option>
+              	<option value="JPN">Japan</option>
+              	<option value="JEY">Jersey</option>
+              	<option value="JOR">Jordan</option>
+              	<option value="KAZ">Kazakhstan</option>
+              	<option value="KEN">Kenya</option>
+              	<option value="KIR">Kiribati</option>
+              	<option value="PRK">Korea, Democratic People's Republic of</option>
+              	<option value="KOR">Korea, Republic of</option>
+              	<option value="KWT">Kuwait</option>
+              	<option value="KGZ">Kyrgyzstan</option>
+              	<option value="LAO">Lao People's Democratic Republic</option>
+              	<option value="LVA">Latvia</option>
+              	<option value="LBN">Lebanon</option>
+              	<option value="LSO">Lesotho</option>
+              	<option value="LBR">Liberia</option>
+              	<option value="LBY">Libya</option>
+              	<option value="LIE">Liechtenstein</option>
+              	<option value="LTU">Lithuania</option>
+              	<option value="LUX">Luxembourg</option>
+              	<option value="MAC">Macao</option>
+              	<option value="MKD">Macedonia, the former Yugoslav Republic of</option>
+              	<option value="MDG">Madagascar</option>
+              	<option value="MWI">Malawi</option>
+              	<option value="MYS">Malaysia</option>
+              	<option value="MDV">Maldives</option>
+              	<option value="MLI">Mali</option>
+              	<option value="MLT">Malta</option>
+              	<option value="MHL">Marshall Islands</option>
+              	<option value="MTQ">Martinique</option>
+              	<option value="MRT">Mauritania</option>
+              	<option value="MUS">Mauritius</option>
+              	<option value="MYT">Mayotte</option>
+              	<option value="MEX">Mexico</option>
+              	<option value="FSM">Micronesia, Federated States of</option>
+              	<option value="MDA">Moldova, Republic of</option>
+              	<option value="MCO">Monaco</option>
+              	<option value="MNG">Mongolia</option>
+              	<option value="MNE">Montenegro</option>
+              	<option value="MSR">Montserrat</option>
+              	<option value="MAR">Morocco</option>
+              	<option value="MOZ">Mozambique</option>
+              	<option value="MMR">Myanmar</option>
+              	<option value="NAM">Namibia</option>
+              	<option value="NRU">Nauru</option>
+              	<option value="NPL">Nepal</option>
+              	<option value="NLD">Netherlands</option>
+              	<option value="NCL">New Caledonia</option>
+              	<option value="NZL">New Zealand</option>
+              	<option value="NIC">Nicaragua</option>
+              	<option value="NER">Niger</option>
+              	<option value="NGA">Nigeria</option>
+              	<option value="NIU">Niue</option>
+              	<option value="NFK">Norfolk Island</option>
+              	<option value="MNP">Northern Mariana Islands</option>
+              	<option value="NOR">Norway</option>
+              	<option value="OMN">Oman</option>
+              	<option value="PAK">Pakistan</option>
+              	<option value="PLW">Palau</option>
+              	<option value="PSE">Palestinian Territory, Occupied</option>
+              	<option value="PAN">Panama</option>
+              	<option value="PNG">Papua New Guinea</option>
+              	<option value="PRY">Paraguay</option>
+              	<option value="PER">Peru</option>
+              	<option value="PHL">Philippines</option>
+              	<option value="PCN">Pitcairn</option>
+              	<option value="POL">Poland</option>
+              	<option value="PRT">Portugal</option>
+              	<option value="PRI">Puerto Rico</option>
+              	<option value="QAT">Qatar</option>
+              	<option value="REU">Réunion</option>
+              	<option value="ROU">Romania</option>
+              	<option value="RUS">Russian Federation</option>
+              	<option value="RWA">Rwanda</option>
+              	<option value="BLM">Saint Barthélemy</option>
+              	<option value="SHN">Saint Helena, Ascension and Tristan da Cunha</option>
+              	<option value="KNA">Saint Kitts and Nevis</option>
+              	<option value="LCA">Saint Lucia</option>
+              	<option value="MAF">Saint Martin (French part)</option>
+              	<option value="SPM">Saint Pierre and Miquelon</option>
+              	<option value="VCT">Saint Vincent and the Grenadines</option>
+              	<option value="WSM">Samoa</option>
+              	<option value="SMR">San Marino</option>
+              	<option value="STP">Sao Tome and Principe</option>
+              	<option value="SAU">Saudi Arabia</option>
+              	<option value="SEN">Senegal</option>
+              	<option value="SRB">Serbia</option>
+              	<option value="SYC">Seychelles</option>
+              	<option value="SLE">Sierra Leone</option>
+              	<option value="SGP">Singapore</option>
+              	<option value="SXM">Sint Maarten (Dutch part)</option>
+              	<option value="SVK">Slovakia</option>
+              	<option value="SVN">Slovenia</option>
+              	<option value="SLB">Solomon Islands</option>
+              	<option value="SOM">Somalia</option>
+              	<option value="ZAF">South Africa</option>
+              	<option value="SGS">South Georgia and the South Sandwich Islands</option>
+              	<option value="SSD">South Sudan</option>
+              	<option value="ESP">Spain</option>
+              	<option value="LKA">Sri Lanka</option>
+              	<option value="SDN">Sudan</option>
+              	<option value="SUR">Suriname</option>
+              	<option value="SJM">Svalbard and Jan Mayen</option>
+              	<option value="SWZ">Swaziland</option>
+              	<option value="SWE">Sweden</option>
+              	<option value="CHE">Switzerland</option>
+              	<option value="SYR">Syrian Arab Republic</option>
+              	<option value="TWN">Taiwan, Province of China</option>
+              	<option value="TJK">Tajikistan</option>
+              	<option value="TZA">Tanzania, United Republic of</option>
+              	<option value="THA">Thailand</option>
+              	<option value="TLS">Timor-Leste</option>
+              	<option value="TGO">Togo</option>
+              	<option value="TKL">Tokelau</option>
+              	<option value="TON">Tonga</option>
+              	<option value="TTO">Trinidad and Tobago</option>
+              	<option value="TUN">Tunisia</option>
+              	<option value="TUR">Turkey</option>
+              	<option value="TKM">Turkmenistan</option>
+              	<option value="TCA">Turks and Caicos Islands</option>
+              	<option value="TUV">Tuvalu</option>
+              	<option value="UGA">Uganda</option>
+              	<option value="UKR">Ukraine</option>
+              	<option value="ARE">United Arab Emirates</option>
+              	<option value="GBR">United Kingdom</option>
+              	<option value="USA">United States</option>
+              	<option value="UMI">United States Minor Outlying Islands</option>
+              	<option value="URY">Uruguay</option>
+              	<option value="UZB">Uzbekistan</option>
+              	<option value="VUT">Vanuatu</option>
+              	<option value="VEN">Venezuela, Bolivarian Republic of</option>
+              	<option value="VNM">Viet Nam</option>
+              	<option value="VGB">Virgin Islands, British</option>
+              	<option value="VIR">Virgin Islands, U.S.</option>
+              	<option value="WLF">Wallis and Futuna</option>
+              	<option value="ESH">Western Sahara</option>
+              	<option value="YEM">Yemen</option>
+              	<option value="ZMB">Zambia</option>
+              	<option value="ZWE">Zimbabwe</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+              <input class="form-control" type="text" name ="address" required="required" placeholder="Street">
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" type="text" name ="city" id="city" required="required" placeholder="City">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+              <input class="form-control" type="number" id="zip" name ="zipcode" required="required" placeholder="Zip">
+            </div>
+            <div class="col-sm-6">
+              <select name ="state" id="state" required class="form-control">
+                <option value="" hidden="hidden">State</option>
+              	<option value="AL">Alabama</option>
+              	<option value="AK">Alaska</option>
+              	<option value="AZ">Arizona</option>
+              	<option value="AR">Arkansas</option>
+              	<option value="CA">California</option>
+              	<option value="CO">Colorado</option>
+              	<option value="CT">Connecticut</option>
+              	<option value="DE">Delaware</option>
+              	<option value="DC">District Of Columbia</option>
+              	<option value="FL">Florida</option>
+              	<option value="GA">Georgia</option>
+              	<option value="HI">Hawaii</option>
+              	<option value="ID">Idaho</option>
+              	<option value="IL">Illinois</option>
+              	<option value="IN">Indiana</option>
+              	<option value="IA">Iowa</option>
+              	<option value="KS">Kansas</option>
+              	<option value="KY">Kentucky</option>
+              	<option value="LA">Louisiana</option>
+              	<option value="ME">Maine</option>
+              	<option value="MD">Maryland</option>
+              	<option value="MA">Massachusetts</option>
+              	<option value="MI">Michigan</option>
+              	<option value="MN">Minnesota</option>
+              	<option value="MS">Mississippi</option>
+              	<option value="MO">Missouri</option>
+              	<option value="MT">Montana</option>
+              	<option value="NE">Nebraska</option>
+              	<option value="NV">Nevada</option>
+              	<option value="NH">New Hampshire</option>
+              	<option value="NJ">New Jersey</option>
+              	<option value="NM">New Mexico</option>
+              	<option value="NY">New York</option>
+              	<option value="NC">North Carolina</option>
+              	<option value="ND">North Dakota</option>
+              	<option value="OH">Ohio</option>
+              	<option value="OK">Oklahoma</option>
+              	<option value="OR">Oregon</option>
+              	<option value="PA">Pennsylvania</option>
+              	<option value="RI">Rhode Island</option>
+              	<option value="SC">South Carolina</option>
+              	<option value="SD">South Dakota</option>
+              	<option value="TN">Tennessee</option>
+              	<option value="TX">Texas</option>
+              	<option value="UT">Utah</option>
+              	<option value="VT">Vermont</option>
+              	<option value="VA">Virginia</option>
+              	<option value="WA">Washington</option>
+              	<option value="WV">West Virginia</option>
+              	<option value="WI">Wisconsin</option>
+              	<option value="WY">Wyoming</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <br>
+        <label class="required">Phone</label>
+        <input class="form-control" type="tel" name ="home phone" placeholder="Phone"  required="required"><br>
+        <label class="required">Email Address</label>
+        <input class="form-control" type="email" name ="email" required placeholder="Email"><br>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Booking information</legend>
+        <label class="required">Rooms and dates</label>
+        <div class="row">
+        <div class="col-sm-6">
+          <input class="form-control" id="dateIn" name="date" placeholder="Date-In"
+          required="required">
+        </div>
+        <div class="col-sm-6">
+          <input class="form-control" id="dateOut" name="date" placeholder="Date-Out"
+          required="required">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <select name="rooms" class="form-control">
+            <option value="1">01 ROOM</option>
+          </select>
+        </div>
+        <div class="col-sm-6">
+          <select name="guest" id="guest" class="form-control">
+            <option value="1">01 GUEST</option>
+            <option value="2">02 GUESTS</option>
+            <option value="3">03 GUESTS</option>
+            <option value="4">04 GUESTS</option>
+            <option value="5">05 GUESTS</option>
+            <option value="6">06 GUESTS</option>
+            <option value="7">07 GUESTS</option>
+            <option value="8">08 GUESTS</option>
+            <option value="9">09 GUESTS</option>
+            <option value="10">10 GUESTS</option>
+          </select>
+        </div>
+    </div>
+    <br>
+        <div class="required"><label>Room Selection</label></div>
+        <div class="row room-hover click" id="deluxe" style="height:120px;margin-bottom:10px;">
+          <div class="col-sm-6">
+            <img src="room1a.jpg" width="180" height="100" alt="deluxe room">
+          </div>
+          <div class="col-sm-6 room-price check" id="deluxe1">
+            <h4><strong>Deluxe</strong></h4>
+              <p>Max. 4 guests</p>
+              <p><span class="price">120</span>.00 USD/NIGHT</p>
+          </div>
+        </div>
+        <div class="row room-hover click" id="premium" style="height:120px;margin-bottom:10px;">
+          <div class="col-sm-6">
+            <img src="room2a.jpg" width="180" height="100" alt="premium room">
+          </div>
+          <div class="col-sm-6 room-price check" id="premium1">
+            <h4><strong>Premium</strong></h4>
+              <p>Max. 4 guests</p>
+              <p><span class="price">185</span>.00 USD/NIGHT</p>
+          </div>
+        </div>
+        <div class="row room-hover click" id="suite" style="height:120px;">
+          <div class="col-sm-6">
+            <img src="suite.jpg" width="180" height="100" alt="Suite">
+          </div>
+          <div class="col-sm-6 room-price check" id="suite1">
+            <h4><strong>Suite</strong></h4>
+              <p>Max. 10 guests</p>
+              <p><span class="price">435</span>.00 USD/NIGHT</p>
+          </div>
+        </div>
+        <div><label>Special Requirements</label></div>
+        <div class="row" style="height:150px;">
+          <textarea style="height:150px; width:400px;margin-left:25px;" name="questions" placeholder="Type your preferences here"></textarea><br>
+        </div>
+      </fieldset>
+      </form>
+      <div class="row text-center" style="margin:10PX 0 10px 20px;">
+        <button type="submit" class="btn btn-default">PROCEED TO PAYMENT</button>
+      </div>
+      </div>
+  </div>
+  <div class="col-sm-6 text-left" style="padding-left:50px">
+    <div class="row text-left">
+      <h2>Or Just Contact Us</h2>
+    <h3>Connect</h3>
+    <p>Tel. +1 240 486 4528
+    <br>Email us at <a href="mailto:dynamicboy.nath@yahoo.com"><em>dynamicboy.nath@yahoo.com</em></a></p>
+    <span class="fa fa-facebook-square social"></span> <span class="fa fa-twitter-square social"></span> <span class="fa fa-instagram social"></span>
+    </div>
+    <div class="row" style="height=100px">
+      <h3>Locate Us</h3>
+      <p>
+        0000 Pensylvania Ave NW<br>
+        Washington, DC 20000</p>
+    </div>
+
+    <div class="row" id="googleMap" >
+
+    </div>
+  </div>
+</div>
+</div>
+<div class="imgdiv">
+</div>
+
+<footer class="text-center">
+  <a class="up-arrow" href="#pageTop" data-toggle="tooltip" title="BACK TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <div class="container">
+  <p style="font-size: x-small">COPYRIGHT <span class="glyphicon glyphicon-copyright-mark"></span> 2017 THE GRAHAN HOTEL & SUITES. ALL RIGHTS RESERVED</p>
+</div>
+</footer>
+<script>
+function myMap() {
+var myCenter = new google.maps.LatLng(38.889931, -77.009003);
+var mapProp = {center:myCenter, zoom:12, scrollwheel:true, draggable:true, mapTypeId:google.maps.MapTypeId.ROADMAP};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({position:myCenter});
+marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDKS20ck3HdgD5iIp63sjH6xSR2ahWJDQ&callback=myMap"></script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+})
+</script>
+</html>

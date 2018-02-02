@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Grahan</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles2.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]');
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+      $('#book').click(function(){
+        window.location.href="form.html";
+      });
+      $("#book").on("click", function(){
+        var url="form.html?date-in="+encodeURIComponent($("#dateIn").val())
+        +"&date-out="+encodeURIComponent($("#dateOut").val())+"&guest="+
+        encodeURIComponent($("#guest").val());
+        window.location.href=url;
+      });
+      });
+</script>
+</head>
+<body id="pageTop">
+  <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="grahan1.jpg" width="120" height="60" alt="Logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="hov" href="index.html">HOME</a></li>
+        <li><a class="hov" href="#rooms">ROOMS</a></li>
+        <li><a class="hov" href="#services">SERVICES</a></li>
+        <li><a class="hov" href="meetings.html">MEETINGS & EVENTS</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle hov" data-toggle="dropdown" href="#">ATTRACTIONS
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="hov" href="monuments.html">MONUMENTS</a></li>
+            <li><a class="hov" href="restaurants.html">RESTAURANTS</a></li>
+            <li><a class="hov" href="waterfront.html">WATERFRONTS</a></li>
+          </ul>
+        </li>
+        <li><a class="hov" href="form.html">RESERVE/CONTACT US</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div id="myslide" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myslide" data-slide-to="0" class="active"></li>
+      <li data-target="#myslide" data-slide-to="1"></li>
+      <li data-target="#myslide" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="room1a.jpg" alt="Suite">
+      </div>
+
+      <div class="item">
+        <img src="room2.jpg" alt="Reception">
+      </div>
+
+      <div class="item">
+        <img src="room3.jpg" alt="Ballroom">
+      </div>
+    </div>
+
+    <a class="left carousel-control" href="#myslide" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myslide" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="container book-now">
+    <div class="row text-center form-inline">
+    <div class="col-sm-2 input-group">
+      <input class="form-control" id="dateIn" name="date" placeholder="Date-In"
+      required="required">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    </div>
+    <div class="col-sm-2 input-group">
+      <input class="form-control" id="dateOut" name="date" placeholder="Date-Out"
+      required="required">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    </div>
+    <div class="col-sm-2 input-group">
+      <select name="rooms" class="form-control">
+        <option value="1">01 ROOM</option>
+      </select>
+    </div>
+    <div class="col-sm-2 input-group">
+      <select name="guest" id="guest" class="form-control">
+        <option value="1">01 GUEST</option>
+        <option value="2">02 GUESTS</option>
+        <option value="3">03 GUESTS</option>
+        <option value="4">04 GUESTS</option>
+        <option value="5">05 GUESTS</option>
+        <option value="6">06 GUESTS</option>
+        <option value="7">07 GUESTS</option>
+        <option value="8">08 GUESTS</option>
+        <option value="9">09 GUESTS</option>
+        <option value="10">10 GUESTS</option>
+      </select>
+    </div>
+    <div class="col-sm-2 input-group">
+    </div>
+    <div class=" input-group">
+    <button type="submit" class="btn btn-default" id="book">Book Now</button>
+</div>
+</div>
+</div>
+<div class="container text-center" id="aboutUs" style="margin:10px 0 10px 0;">
+<div style="width:600px;margin:auto;">
+    <h3 style="font-weight:lighter;"><span style="color:#b34700;"><strong>GRAHAN Hotel & Suites</strong></span><br>Washington, DC</h3>
+    <p>Located at the heart of the nation's capital, the GRAHAN brings you within walking distance of
+    most of the city's hotspots. Enjoy an amazing night view of the city from select rooms.
+    Best of all, we bring to you unbridled luxury, comfort, and elegance at the most affordable rates in the city;
+    we guarantee it!
+    A truly relaxing experience awaits you at the GRAHAN on your next visit.</p>
+</div>
+
+</div>
+<div class="container room">
+<div class="row text-center" id="rooms">
+  <h2>ROOMS</h2>
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="room1a.jpg" alt="Deluxe">
+      <p><strong>Deluxe Rooms</strong></p>
+      <p>Choose from variety of bed types (one king, one queen, or two queens)
+      in a modern and luxurious design featuring granite-top dresser, 40" LCD flat screen TV, mini bar, and panoramic city view. 500 square feet.</p>
+      <p><span class="price">120</span>.00 USD/NIGHT</p>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="room2a.jpg" alt="Premium">
+      <p><strong>Premium Rooms</strong></p>
+      <p>Luxury reimagined just for you, in a space embelished with modern aesthetics,
+      featuring a King bed, an integrated media center, blackout shades, 48" HD LCD TV, marble tops, and much more. 480 square feet.</p>
+      <p><span class="price">185</span>.00 USD/NIGHT</p><br>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="suite.jpg" alt="Suite">
+      <p><strong>Suites</strong></p>
+      <p>Traveling in a party; or perhaps need more space? We've got the perfect suite for you.
+      Soak your cares in our open-air tub. GRAHAN robes and slippers await you. Feel like an excutive in our Business desk.
+    1050 square feet.</p>
+    <p><span class="price">435</span>.00 USD/NIGHT</p>
+    </div>
+  </div>
+
+</div>
+<div class="row text-center" style="margin:10px;">
+<a class="btn" href="form.html">Book Now</a>
+</div>
+</div>
+<div class="container text-center" id="services">
+  <h2>SERVICES</h2>
+  <h4>What we offer</h4>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <i class="fa fa-wifi logo-small"></i>
+      <h4>24 Hour Complimentary WiFi</h4>
+      <p>High speed internet connection</p>
+    </div>
+    <div class="col-sm-4">
+      <i class="fa fa-bus logo-small"></i>
+      <h4>Shuttle</h4>
+      <p>Shuttle to the airport, convention center, and more</p>
+    </div>
+    <div class="col-sm-4">
+      <i class="fa fa-money logo-small"></i>
+      <h4>ATM & Currency Exchange</h4>
+      <p>ATM in lobby. See reception for currency exchange</p>
+    </div>
+    </div>
+    <br><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <i class="fa fa-car logo-small"></i>
+      <h4>Private Limousine</h4>
+      <p>In city complimentary car service</p>
+    </div>
+    <div class="col-sm-4">
+      <i class="fa fa-gift logo-small"></i>
+      <h4>Gift Shop</h4>
+      <p>In-house gift shop</p>
+    </div>
+    <div class="col-sm-4">
+      <i class="fa fa-heartbeat logo-small"></i>
+      <h4>Fitness Center</h4>
+      <p>24 hour fitness center</p>
+    </div>
+  </div>
+</div>
+</div>
+<footer class="text-center">
+  <a class="up-arrow" href="#pageTop" data-toggle="tooltip" title="BACK TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <div class="container">
+  <p style="font-size: x-small">COPYRIGHT <span class="glyphicon glyphicon-copyright-mark"></span> 2017 THE GRAHAN HOTEL & SUITES. ALL RIGHTS RESERVED</p>
+  <p>
+      <a href="http://jigsaw.w3.org/css-validator/check/referer">
+          <img style="border:0;width:88px;height:31px"
+              src="http://jigsaw.w3.org/css-validator/images/vcss"
+              alt="Valid CSS!" />
+      </a>
+  </p>
+  <a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fnova.umuc.edu%2F~ct488a08%2Ffinal_application%2Findex.html">HTML Validation</a>
+  <a href="reference2.html">References</a>
+</div>
+</footer>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+})
+</script>
+
+</html>
